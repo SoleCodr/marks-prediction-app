@@ -11,9 +11,16 @@ def pred(hours):
 
 def main():
     st.title(" Score Prediction ")
-    hours=st.number_input("Hours Of Study")
-    if float(hours) <= 0.00 or float(hours) >24.00:
-        st.error("Hours should be in between 0-24hr")
+    st.write('''
+        **Assuming the study hours to be maximum 10 hours.**
+        ''')
+    
+    hours=st.number_input("Enter Hours Of Study")
+    if float(hours) <= 0.00 or float(hours) >10.00:
+        st.error("Hours should be in between 0-10hr")
+    elif float(hours)>9.88:
+        if st.button("Predict"):
+            st.success("The Predicted Percentage is 100.00 ")
     else:
         if st.button("Predict"):
             output=pred(hours)
