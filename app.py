@@ -10,20 +10,21 @@ def pred(hours):
     return float(predection)
 
 def main():
-    st.title(" Score Prediction ")
+    st.title(" Score Prediction")
+    st.sidebar.markdown('''
+            By Kuldeep Sharma aka [SoleCodr](https://github.com/SoleCodr)
+    ''')
     st.write('''
         **Assuming the study hours to be maximum 10 hours.**
         ''')
     
-    hours=st.number_input("Enter Number of Hours Of Study")
-    if float(hours) <= 0.00 or float(hours) >10.00:
-        st.error("Hours should be in between 0-10hr")
-    elif float(hours)>9.88:
+    hours=st.number_input("Enter Number of Hours Of Study",0.00,10.00,4.88)
+    if float(hours)>9.88:
         if st.button("Predict"):
             st.success("The Predicted Percentage is 100.00 ")
     else:
         if st.button("Predict"):
-            output=pred(hours)
+            output=round(pred(hours),2)
             st.success("The Predicted Percentage is {}".format(output))
 
 
