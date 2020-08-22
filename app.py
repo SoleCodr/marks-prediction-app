@@ -11,8 +11,8 @@ def pred(hours):
 
 def main():
     st.title(" Score Prediction ")
-    hours=st.text_input("Hours Of Study")
-    if float(hours) <= 0 or float(hours) >24:
+    hours=st.number_input("Hours Of Study")
+    if float(hours) <= 0.00 or float(hours) >24.00:
         st.error("Hours should be in between 0-24hr")
     else:
         if st.button("Predict"):
