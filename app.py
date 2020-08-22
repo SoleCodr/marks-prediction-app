@@ -15,7 +15,7 @@ def main():
         **Assuming the study hours to be maximum 10 hours.**
         ''')
     
-    hours=st.number_input("Enter Hours Of Study")
+    hours=st.number_input("Enter Number of Hours Of Study")
     if float(hours) <= 0.00 or float(hours) >10.00:
         st.error("Hours should be in between 0-10hr")
     elif float(hours)>9.88:
