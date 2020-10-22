@@ -27,7 +27,7 @@ def user_input():
 pred = user_input()
 
 #Loading dataset
-df = pd.read_csv("/Users/macbookpro/Desktop/FiverrProjects/Hacktoberfest/predictionsapp/marks-prediction-app/Data.txt")
+df = pd.read_csv("Data.txt")
 #We create a prediction regression model for a better accuracy
 model = Sequential()
 model.add(Dense(2,activation='relu'))
