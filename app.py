@@ -27,7 +27,7 @@ def user_input():
 pred = user_input()
 
 #Loading dataset
-df = pd.read_csv("Data.txt")
+df = pd.read_csv("https://raw.githubusercontent.com/SoleCodr/Prediction-of-Marks-scored-by-student/master/Data.txt?token=AGEY7MBIGAHSIIG6U7BN7ES7FWEOO")
 #We create a prediction regression model for a better accuracy
 model = Sequential()
 model.add(Dense(2,activation='relu'))
