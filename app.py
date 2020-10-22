@@ -2,6 +2,8 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout
 
 st.write("""
 # Simple Marks Prediction App
@@ -25,15 +27,17 @@ def user_input():
 pred = user_input()
 
 #Loading dataset
-df = pd.read_csv("https://raw.githubusercontent.com/SoleCodr/Prediction-of-Marks-scored-by-student/master/Data.txt?token=AGEY7MBIGAHSIIG6U7BN7ES7FWEOO")
-
-attr = df.iloc[:,:-1].values
-labels = df.iloc[:,1].values
-
-LR = LinearRegression()
-LR.fit(attr,labels)
-
-prediction = round(float(LR.predict(pred)),2)
+df = pd.read_csv("/Users/macbookpro/Desktop/FiverrProjects/Hacktoberfest/predictionsapp/marks-prediction-app/Data.txt")
+#We create a prediction regression model for a better accuracy
+model = Sequential()
+model.add(Dense(2,activation='relu'))
+model.add(Dense(2,activation='relu'))
+model.add(Dense(1)) #Final prediction layer
+model.compile(loss='mse',optimizer='adam') #Compile the model
+x = df.iloc[:,:-1].values
+y = df.iloc[:,1].values
+model.fit(x,y,epochs=300,batch_size=8) #Train the model for 300 epochs
+prediction = round(float(model.predict(pred)))
 
 if pred > 9.97:
     st.button("Predict")
